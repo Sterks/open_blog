@@ -1,0 +1,17 @@
+<table>
+<thead>
+  <tr>
+    <th>Название категории</th>
+    <th>Описание категории</th>
+</th>
+</thead>
+<tbody>
+  <% @categories.each do |category| %>
+  <tr>
+    <td><%= link_to category.title, category %></td>
+    <td><%= category.description %></td>
+    <td><%= link_to 'Удалить', category_path(category), method: :delete, data:  {contfirm: 'Вы уверены?'} %>
+  <% end %>
+  </tr>
+</tbody>
+</table>

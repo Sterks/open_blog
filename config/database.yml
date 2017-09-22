@@ -1,0 +1,21 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: rails
+  password: 4r2w3e1q
+  hostname: localhost
+  port: 5432
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: posts_development
+
+test:
+  <<: *default
+  database: posts_test
+
+production:
+  <<: *default
+  database: posts_production

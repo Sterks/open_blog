@@ -1,0 +1,33 @@
+
+<p>
+  Название категории: <%= @category.title %>
+</p>
+<p>
+  Описание категории: <%= @category.description %>
+</p>
+
+<h1>Посты</h1>
+<% @category.posts.each do |category| %>
+  <strong>Название  поста</strong>
+  <%= category.name %><br>
+  <strong>Содержание поста</strong>
+  <%= category.body %><br>
+    <hr>
+<% end %>
+
+
+<%= form_for ([@category, @category.posts.build]) do |f| %>
+<p>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</p>
+<p>
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+</p>
+<p>
+  <%= f.submit %>
+</p>
+
+
+<% end %>

@@ -1,0 +1,14 @@
+<%= form_for ( [@category, @category.posts.build] ) do |post|  %>
+
+  <%= post.label :name %>:<br>
+  <%= post.text_field :name %><br>
+
+  <%= post.label :body %>:<br>
+  <%= post.text_field :body %><br>
+
+  <%= post.label :category_id %>:<br>
+  <%= post.collection_select :category_id, Category.order(:title), :id, :title, { include_blank: true } %><br>
+
+  <%= post.submit 'Сохранить' %>
+
+<% end %>

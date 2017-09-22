@@ -1,0 +1,19 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.button{
+  // border: 1px solid black;
+  padding-left: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 10px;
+  border-radius: 10px;
+  background-color: #474EA3;
+}
+
+a.button {
+  text-decoration: none;
+  color: white ;
+}
