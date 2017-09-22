@@ -5,23 +5,35 @@
   Содержимое поста: <%= @post.body %><br>
 </p>
 
-<h2>Add group</h2>
-
-<%= form_for(@post, @post.category.build) do |f| %>
 <p>
-  <%= f.label :title %><br>
-  <%= f.text_field :title %>
+  Содержимое поста: <%= @post.category.title %><br>
 </p>
-<p>
-  <%= f.label :body %><br>
-  <%= f.text_field :body  %>
-</p>
-<p>
-
-</p><%= f.submit %>
-
-<% end %>
-
+<%= link_to 'Все посты', posts_path, class: 'button' %>
 <%= link_to 'Редактировать', edit_post_path, class: 'button' %>
-<%= link_to 'Назад', posts_path, class: 'button' %>
 <%= link_to 'Новый', new_post_path, class: 'button' %>
+
+<h2>Комментарии:</h2>
+
+
+  <% @post.comments.each do |post| %>
+  <p>
+    <%= post.commenter %>:
+    <%= post.body %>
+  </p>
+  <% end %>
+<hr>
+  <%= form_for([@post, @post.comments.build]) do |f| %>
+      <p>
+        <%= f.label :commenter %><br>
+        <%= f.text_field :commenter %>
+      </p>
+    <p>
+      <%= f.label :body %><br>
+      <%= f.text_field :body %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+
+  <%end %>
+

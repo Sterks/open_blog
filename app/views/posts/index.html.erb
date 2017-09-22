@@ -1,18 +1,18 @@
 <table>
 <thead>
-  <tr>
-    <th>Название поста</th>
-    <th>Текст поста</th>
-    <th>Категория</th>
-    <th>Описание</th>
-</th>
+  <th>
+    <tr>Название поста</tr>
+    <tr>Текст поста</tr>
+    <td>Категория</td>
+    <td>Описание</td>
+  </th>
 </thead>
 <tbody>
   <% @posts.each do |post| %>
   <tr>
-    <td><%= post.name %></td>
+    <td><%= link_to post.name, post %></td>
     <td><%= post.body %></td>
-    <td><%#= post.category.title %></td>
+    <td><%= post.category.title %></td>
     <td><%#= link_to 'Удалить', post_path(post), method: :delete, data:  {contfirm: 'Вы уверены?'} %>
   <% end %>
   </tr>

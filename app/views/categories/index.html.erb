@@ -10,8 +10,10 @@
   <tr>
     <td><%= link_to category.title, category %></td>
     <td><%= category.description %></td>
-    <td><%= link_to 'Удалить', category_path(category), method: :delete, data:  {contfirm: 'Вы уверены?'} %>
+    <td><%= link_to 'Удалить', categories_path(@category), data: { confirm: 'Вы уверены?'}, method: :delete %></td>
   <% end %>
   </tr>
 </tbody>
 </table>
+
+<%= link_to 'Новый', new_category_path, class: 'button' %>

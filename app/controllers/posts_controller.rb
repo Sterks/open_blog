@@ -2,18 +2,19 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @category = Category.find(params[:category_id])
   end
 
   def new
-    @category = Category.find(params[:category_id])
+    @post = Post.new
   end
 
   def create
-    @category = Category.find(params[:category_id])
-
-    @post = @category.posts.create(post_params)
-    redirect_to category_path(@category)
+    @post = Post.new(post_params)
+    if @post.save
+      redirect_to @post
+    else
+      render :new
+    end
   end
 
   def show
@@ -43,7 +44,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:name, :body, :category_id)
+    params.require(:post).permit(:name, :body, :category_id, :post_id)
   end
 
 end

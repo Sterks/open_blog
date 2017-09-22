@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
 
 def index
   @categories = Category.all
+  @category = Category.new
 end
 
 def new
@@ -17,7 +18,7 @@ def edit
 end
 
 def create
-  @category = Category.create(category_params)
+  @category = Category.new(category_params)
   if @category.save
     redirect_to @category
   else
@@ -34,11 +35,17 @@ def update
   end
 end
 
+def destroy
+  @category = Category.find(params[:id])
+  @category.destroy
+  redirect_to categories_url
+end
+
 
 private
 
 def category_params
-  params.require(:category).permit!
+  params.require(:category).permit(:title, :description)
 end
 
 end
